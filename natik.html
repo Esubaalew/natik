@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #282c34;
+      perspective: 1000px;
+      overflow: hidden;
+    }
+
+    .big-3d-text {
+      font-size: 5em;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 10px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateAnimation 5s infinite linear;
+      margin-bottom: 20px;
+    }
+    .big-3d-textt {
+      font-size: 2em;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 5px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: pulsateAnimation 2s infinite ease-in-out;
+      margin-bottom: 20px;
+    }
+
+    @keyframes rotateAnimation {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+    @keyframes pulsateAnimation {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .big-3d-text span {
+      display: inline-block;
+      transform-origin: center;
+      background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .big-3d-text span:nth-child(odd) {
+      transform: translateZ(20px);
+    }
+
+    .big-3d-text span:nth-child(even) {
+      transform: translateZ(-20px);
+    }
+
+    .coming-soon {
+      font-size: 2em;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coming-soon span {
+      display: inline-block;
+      opacity: 0;
+      animation: slideInLeft 2s forwards, slideInRight 2s backwards;
+    }
+
+    .coming-soon .coming {
+      animation-delay: 2s;
+    }
+
+    @keyframes slideInLeft {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto;
+      background-color: #1a1a1a;
+      padding: 20px;
+      width: 100%;
+      color: white;
+    }
+
+    .footer-logo {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .copyright {
+      font-size: 1em;
+      opacity: 0.8;
+    }
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      animation: fadeIn 2s forwards;
+      margin-top: 0px;
+
+    }
+
+    .quote {
+      font-size: 1.5em;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .quote span:nth-child(1) {
+      color: #00ff00; /* Green */
+    }
+
+    .quote span:nth-child(2) {
+      color: #ffff00; /* Yellow */
+    }
+
+    .quote span:nth-child(3) {
+      color: #ff0000; /* Red */
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+  </style>
+  <title>3D Animated Letters</title>
+  <script>
+    function updateEthiopianTime() {
+      const ethiopianTimeElement = document.getElementById("ethiopian-time");
+
+      // Get the current date and time in the Gregorian calendar
+      const now = new Date();
+
+      // Convert to Ethiopian calendar
+      const ethiopianYear = now.getFullYear(); // Ethiopian year is behind by 8 years
+      const ethiopianMonth = now.getMonth() + 1; // Months are 0-based
+      const ethiopianDay = now.getDate();
+
+      // Get the current time
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      // Format the time with color-coded spans and 3D styling
+      const formattedTime = `
+      <div class="big-3d-textt" style="font-size: 2em;">
+        <span style="color: #00ff00;">${ethiopianDay}</span>/
+        <span style="color: #ffff00;">${ethiopianMonth}</span>/
+        <span style="color: #ff0000;">${ethiopianYear}</span>
+        <span style="color: #00ff00;">${hours}</span>:
+        <span style="color: #ffff00;">${minutes}</span>:
+        <span style="color: #ff0000;">${seconds}</span>
+      </div>`;
+
+      // Update the content
+      ethiopianTimeElement.innerHTML = formattedTime;
+    }
+
+    // Update the Ethiopian time every second
+    setInterval(updateEthiopianTime, 1000);
+  </script>
+
+</head>
+<body>
+  <div class="quote-card">
+    <div class="quote">
+      <span>Hard</span> <span>work</span> <span>pays off.</span>
+    </div>
+  </div>
+  <div class="big-3d-text">
+    <span>N</span><span>A</span><span>T</span><span>I</span><span>K</span>
+  </div>
+  <div class="coming-soon">
+    <span class="coming">ዛሬ</span>
+    <span>ቀኑ !</span>
+  </div>
+  <div class="ethiopian-time" style="color: white; font-size: 1.2em;">
+   <span id="ethiopian-time"></span>
+  </div>
+  <div class="footer">
+    <div class="footer-logo">NATIC</div>
+    <div class="copyright">&#169; 2023</div>
+  </div>
+</body>
+</html>
