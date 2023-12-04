@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Include Nova Square font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap">
+    <!-- Include Permanent Marker font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap">
   <style>
     body {
       display: flex;
@@ -18,16 +24,16 @@
 
     .big-3d-text {
       font-size: 5em;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 10px;
       position: relative;
       transform-style: preserve-3d;
-      animation: rotateAnimation 5s infinite linear;
+      animation: rotateAnimation 8s infinite linear;
       margin-bottom: 20px;
     }
     .big-3d-textt {
       font-size: 2em;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Nova Square', sans-serif;
       letter-spacing: 5px;
       position: relative;
       transform-style: preserve-3d;
@@ -113,6 +119,12 @@
       font-size: 1em;
       opacity: 0.8;
     }
+    .ethiopian-time {
+      color: white;
+      font-size: 1.2em;
+      font-family: 'Permanent Marker', cursive;
+    }
+
 
     .quote-card {
       display: flex;
@@ -134,6 +146,7 @@
       font-size: 1.5em;
       text-align: center;
       margin: 20px 0;
+      font-family: 'Dhurjati', sans-serif;
     }
 
     .quote span:nth-child(1) {
@@ -152,9 +165,71 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
+/* Smaller screens */
+@media only screen and (max-width: 600px) {
+  .big-3d-text {
+    font-size: 3em;
+    letter-spacing: 5px;
+  }
+
+  .big-3d-textt {
+    font-size: 1.5em;
+    letter-spacing: 3px;
+  }
+
+  .quote-card {
+    margin: 10px;
+  }
+
+  .quote {
+    font-size: 1.2em;
+  }
+
+  .coming-soon {
+    font-size: 1.2em;
+  }
+
+  .footer-logo {
+    font-size: 1.5em;
+  }
+}
+
+/* Medium screens */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .big-3d-text {
+    font-size: 4em;
+    letter-spacing: 8px;
+  }
+
+  .big-3d-textt {
+    font-size: 1.8em;
+    letter-spacing: 4px;
+  }
+
+  .quote-card {
+    margin: 15px;
+  }
+
+  .quote {
+    font-size: 1.3em;
+  }
+
+  .coming-soon {
+    font-size: 1.3em;
+  }
+
+  .footer-logo {
+    font-size: 1.8em;
+  }
+}
 
   </style>
-  <title>NAATIC</title>
+  <title>NAATIK</title>
+  <link
+  rel="icon"
+  href="https://api.iconify.design/logos:eventbrite-icon.svg?color=%23888888"
+  type="image/x-icon"
+/>
   <script>
     function updateEthiopianTime() {
       const ethiopianTimeElement = document.getElementById("ethiopian-time");
@@ -209,8 +284,8 @@
    <span id="ethiopian-time"></span>
   </div>
   <div class="footer">
-    <div class="footer-logo">NAATIC</div>
-    <div class="copyright">&#169; 2023</div>
+    <div class="footer-logo">&#169; 2023 NAATIK</div>
+    
   </div>
 </body>
 </html>
